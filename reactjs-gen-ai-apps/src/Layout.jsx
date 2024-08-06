@@ -59,7 +59,7 @@ export default () => {
                             { type: "divider" },
                             {
                                 type: "section", text: "Microsoft Copilot", items: [
-                                { type: 'link', text: `Teams`, href: `https://teams.microsoft.com` },
+                                { type: 'link', text: `Teams`, external: true, href: `https://teams.microsoft.com` },
                             ]
                         }
                         ]
