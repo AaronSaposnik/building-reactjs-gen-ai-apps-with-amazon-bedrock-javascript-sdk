@@ -71,7 +71,6 @@ export default () => {
             <SpaceBetween size="xs">
 
                 <FMPicker ref={modelPickerRef} key={1} multimodal={true} />
-/*                 <PromptPicker ref={promptPickerRef} />  */
                 <Box data-id="chat-window">
                     {
                         messages.length ?
