@@ -28,7 +28,7 @@ const Menu = ({ signOut, groups, ...user }) => {
 
       identity={{
         onFollow: (() => { navigate("/") }),
-        title: <div className='title'>Amazon Bedrock Javascript</div>,
+        title: <div className='title'>Amazon Bedrock</div>,
 
       }}
       utilities={[
