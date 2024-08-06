@@ -37,7 +37,7 @@ export default () => {
 
                                 ]
                             },
-                            {
+/*                            {
                                 type: "section", text: "System Prompts", items: [
                                     { type: "link", href: "/prompt", text: "Prompts" }
                                 ]
@@ -49,7 +49,7 @@ export default () => {
                                     { type: 'link', text: `Amazon Bedrock Retrieve => LLM`, href: `/retrieve` },
                                     { type: 'link', text: `Amazon Bedrock Retrieve & Generate`, href: `/retrieveandgenerate` }
                                 ]
-                            },
+                            },*/
                             { type: "divider" },
                             {
                                 type: "section", text: "Agents for Amazon Bedrock", items: [
