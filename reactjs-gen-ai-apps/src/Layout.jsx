@@ -55,6 +55,12 @@ export default () => {
                                 type: "section", text: "Agents for Amazon Bedrock", items: [
                                 { type: 'link', text: `Agents`, href: `/bedrockagent` },
                             ]
+                        },
+                            { type: "divider" },
+                            {
+                                type: "section", text: "Microsoft Copilot", items: [
+                                { type: 'link', text: `Teams`, href: `https://teams.microsoft.com` },
+                            ]
                         }
                         ]
                     }
