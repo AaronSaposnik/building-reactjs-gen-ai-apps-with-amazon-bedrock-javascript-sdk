@@ -45,5 +45,5 @@ const Struct = ({ signOut, ...user }) =>
 export default withAuthenticator(App, {
   hideSignUp: true,
   socialProviders: ['apple'],
-  providers: ['Azure-AIWeb-IDP']
+  provider: ['Azure-AIWeb-IDP']
 })
