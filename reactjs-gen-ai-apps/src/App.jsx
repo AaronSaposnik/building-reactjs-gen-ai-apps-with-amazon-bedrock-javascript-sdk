@@ -45,17 +45,14 @@ const Struct = ({ signOut, ...user }) =>
 export default withAuthenticator(App, {
   hideSignUp: true,
   components: {
-      Footer() {
-    const { tokens } = useTheme();
-
+    Header() {},
+    Footer() {
     return (
-      <View textAlign="center" padding={tokens.space.large}>
-        <Text color={tokens.colors.neutral[80]}>
-          &copy; All Rights Reserved
-        </Text>
-      </View>
+      <div id="custom header">
+            All Rights Reserved
+      </div>
     );
+   },
   },
-    },
-  socialProviders: ['apple','Azure']
+  socialProviders: ['apple']
   })
