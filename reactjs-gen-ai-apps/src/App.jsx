@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { withAuthenticator } from '@aws-amplify/ui-react'
-import { Auth } from 'aws-amplify'
+import { federatedSignIn } from '@aws-amplify/Auth'
 import './App.css'
 import Menu from "./Menu"
 import Layout from './Layout'
