@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { withAuthenticator } from '@aws-amplify/ui-react'
+import { Auth } from 'aws-amplify'
 import './App.css'
 import Menu from "./Menu"
 import Layout from './Layout'
@@ -49,7 +50,10 @@ export default withAuthenticator(App, {
     Footer() {
     return (
       <div id="custom header">
-            <button> Sign In with Azure</button>
+            <button  onClick={
+                        () => {
+                          Auth.federatedSignIn({ customProvider: Azure });
+                        }}> Sign In with Azure</button>
       </div>
     );
    },
