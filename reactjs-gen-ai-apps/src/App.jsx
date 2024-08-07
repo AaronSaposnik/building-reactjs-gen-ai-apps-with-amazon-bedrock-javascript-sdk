@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { withAuthenticator } from '@aws-amplify/ui-react'
-import { Auth, CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 import './App.css'
 import Menu from "./Menu"
 import Layout from './Layout'
