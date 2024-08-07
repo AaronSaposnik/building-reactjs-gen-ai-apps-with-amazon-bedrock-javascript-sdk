@@ -44,5 +44,22 @@ const Struct = ({ signOut, ...user }) =>
 
 export default withAuthenticator(App, {
   hideSignUp: true,
+  components: {
+    Footer() {
+            return (
+                <div id="custom-footer">
+          <button
+            data-fullwidth="false"
+            data-size="small"
+            data-variation="link"
+            type="button"
+            style="font-weight: normal"
+          >
+            Login With SSO
+          </button>
+                </div>
+            );
+        }
+    },
   socialProviders: ['apple','Azure']
   })
