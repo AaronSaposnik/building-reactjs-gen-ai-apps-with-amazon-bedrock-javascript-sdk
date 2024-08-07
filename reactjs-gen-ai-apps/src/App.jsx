@@ -49,7 +49,7 @@ export default withAuthenticator(App, {
     Footer() {
     return (
       <div id="custom header">
-            All Rights Reserved
+            <button> Sign In with Azure</button>
       </div>
     );
    },
