@@ -43,6 +43,5 @@ const Struct = ({ signOut, ...user }) =>
   ]
 
 export default withAuthenticator(App, {
-  hideSignUp: true,
-  socialProviders: ['apple']
+  hideSignUp: true
 })
