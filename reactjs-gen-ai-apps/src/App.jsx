@@ -38,7 +38,7 @@ function App() {
   };
 
   return (
-    signInWithRedirect({ provider:{custom:'Azure'}})}>
+    signInWithRedirect({ provider:{custom:'Azure'}})
       <div>{user?.username}</div>
       <div>{customState}</div>
     </div>
