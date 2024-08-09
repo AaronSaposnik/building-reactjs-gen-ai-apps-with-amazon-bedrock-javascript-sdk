@@ -1,61 +1,62 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { withAuthenticator } from '@aws-amplify/ui-react'
-import './App.css'
-import Menu from "./Menu"
-import Layout from './Layout'
-import Prompts from "./Prompts"
-import PromptNew from "./PromptNew"
-import Prompt from "./Prompt"
-import BedrockKBAndGenerate from "./BedrockKBAndGenerate"
-import BedrockKBRetrieve from "./BedrockKBRetrieve"
+    import React, { useEffect, useState } from "react";
+import { Hub } from "aws-amplify/utils";
+import { signInWithRedirect, signOut, getCurrentUser } from "aws-amplify/auth";
 
-import BedrockAgent from "./BedrockAgent"
-import MultiModalLLM from "./MultiModalLLM"
+function App() {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+  const [customState, setCustomState] = useState(null);
 
-const App = ({ signOut, user }) => {
+  useEffect(() => {
+    const unsubscribe = Hub.listen("auth", ({ payload }) => {
+      switch (payload.event) {
+        case "signInWithRedirect":
+          getUser();
+          break;
+        case "signInWithRedirect_failure":
+          setError("An error has ocurred during the OAuth flow.");
+          break;
+        case "customOAuthState":
+          setCustomState(payload.data); // this is the customState provided on signInWithRedirect function
+          break;
+      }
+    });
 
-  const router = createBrowserRouter([
+    getUser();
 
-    {
-      path: "/",
-      errorElement: <div>something went wrong!</div>,
-      element: <Struct signOut={signOut}  {...user} />,
-      children: [
-        { path: "multimodal", element: <MultiModalLLM/> },
-        { path: "retrieveandgenerate", element: <BedrockKBAndGenerate  /> },
-        { path: "prompt", element: <Prompts /> },
-        { path: "prompt/new", element: <PromptNew /> },
-        { path: "prompt/:PromptId", element: <Prompt /> },
-        { path: "retrieve", element: <BedrockKBRetrieve /> },
-        { path: "bedrockagent", element: <BedrockAgent /> },
+    return unsubscribe;
+  }, []);
 
-      ]
+  const getUser = async () => {
+    try {
+      const currentUser = await getCurrentUser();
+      setUser(currentUser);
+    } catch (error) {
+      console.error(error);
+      console.log("Not signed in");
     }
-  ])
+  };
 
-  return (<RouterProvider router={router} />)
+  return (
+    <div className="App">
+      <button onClick={() => signInWithRedirect({ provider:{custom:'Azure'}})}>Open Microsoft</button>
+      <button onClick={() => signInWithRedirect({ provider: "Facebook", customState: "shopping-cart" })}>
+        Open Facebook
+      </button>
+      <button onClick={() => signInWithRedirect({ provider: "Google", customState: "shopping-cart" })}>
+        Open Google
+      </button>
+      <button onClick={() => signInWithRedirect({ provider: "Amazon", customState: "shopping-cart" })}>
+        Open Amazon
+      </button>
+      <button onClick={() => signInWithRedirect({ provider: "Apple", customState: "shopping-cart" })}>
+        Open Apple
+      </button>
+      <button onClick={() => signOut()}>Sign Out</button>
+      <div>{user?.username}</div>
+      <div>{customState}</div>
+    </div>
+  );
 }
 
-const Struct = ({ signOut, ...user }) =>
-  [
-    <Menu key={1} signOut={signOut} {...user}></Menu>,
-    <Layout key={2} ></Layout>
-  ]
-
-export default withAuthenticator(App, {
-  hideSignUp: true,
-  components: {
-    Header() {},
-    Footer() {
-    return (
-      <div id="custom header">
-            <button  onClick={
-                        () => {
-                          Auth.federatedSignIn({ customProvider: Azure });
-                        }}> Sign In with Azure</button>
-      </div>
-    );
-   },
-  },
-  socialProviders: ['apple']
-  })
+export default App
