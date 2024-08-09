@@ -38,21 +38,7 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <button onClick={() => signInWithRedirect({ provider:{custom:'Azure'}})}>Open Microsoft</button>
-      <button onClick={() => signInWithRedirect({ provider: "Facebook", customState: "shopping-cart" })}>
-        Open Facebook
-      </button>
-      <button onClick={() => signInWithRedirect({ provider: "Google", customState: "shopping-cart" })}>
-        Open Google
-      </button>
-      <button onClick={() => signInWithRedirect({ provider: "Amazon", customState: "shopping-cart" })}>
-        Open Amazon
-      </button>
-      <button onClick={() => signInWithRedirect({ provider: "Apple", customState: "shopping-cart" })}>
-        Open Apple
-      </button>
-      <button onClick={() => signOut()}>Sign Out</button>
+    signInWithRedirect({ provider:{custom:'Azure'}})}>
       <div>{user?.username}</div>
       <div>{customState}</div>
     </div>
