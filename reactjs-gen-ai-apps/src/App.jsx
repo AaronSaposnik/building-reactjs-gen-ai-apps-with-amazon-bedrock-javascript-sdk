@@ -38,27 +38,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <button onClick={() => signInWithRedirect()}>Open Hosted UI</button>
-      <button onClick={() => signInWithRedirect({ provider: {custom:'Azure'}})}>
-        Open Azure
-      </button>
-      <button onClick={() => signInWithRedirect({ provider: "Facebook"})}>
-        Open Facebook
-      </button>
-      <button onClick={() => signInWithRedirect({ provider: "Google"})}>
-        Open Google
-      </button>
-      <button onClick={() => signInWithRedirect({ provider: "Amazon" })}>
-        Open Amazon
-      </button>
-      <button onClick={() => signInWithRedirect({ provider: "Apple"})}>
-        Open Apple
-      </button>
-      <button onClick={() => signOut()}>Sign Out</button>
-      <div>{user?.username}</div>
-    </div>
-  );
+            signInWithRedirect()
+        );
 }
 
 export default App
